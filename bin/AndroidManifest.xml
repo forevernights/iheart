@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="sg.smu.iheart"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="15" />
+
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="sg.smu.iheart.navigation.NavigationActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="sg.smu.iheart.eform.EFormActivity"
+            android:label="@string/title_activity_eform" >
+        </activity>
+        <activity
+            android:name="sg.smu.iheart.eform.EFormSurveyActivity"
+            android:label="@string/title_activity_eform_survey" >
+        </activity>
+        <activity
+            android:name="sg.smu.iheart.faq.FAQActivity"
+            android:label="@string/title_activity_faq" >
+        </activity>
+        <activity
+            android:name="sg.smu.iheart.login.LoginActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name="sg.smu.iheart.signup.SignupActivity"
+            android:label="@string/title_activity_signup" >
+        </activity>
+        <activity
+            android:name="sg.smu.iheart.supply.SupplyActivity"
+            android:label="@string/title_activity_supply" >
+        </activity>
+        <activity
+            android:name="sg.smu.iheart.account.AccountActivity"
+            android:label="@string/title_activity_account" >
+        </activity>
+        <activity
+            android:name="sg.smu.iheart.social.SocialNotificationActivity"
+            android:label="@string/title_activity_social" >
+        </activity>
+        <activity
+            android:name="sg.smu.iheart.schedule.ScheduleActivity"
+            android:label="@string/title_activity_schedule" >
+        </activity>
+        <activity
+            android:name="sg.smu.iheart.location.LocationActivity"
+            android:label="@string/title_activity_location" >
+        </activity>
+        <activity
+            android:name="sg.smu.iheart.supply.SupplyInfoActivity"
+            android:label="@string/title_activity_supply_info" >
+        </activity>
+        <activity
+            android:name="sg.smu.iheart.social.SocialFriendsActivity"
+            android:label="@string/title_activity_social_friends" >
+        </activity>
+        <activity
+            android:name="sg.smu.iheart.social.SocialBroadcastActivity"
+            android:label="@string/title_activity_social_broadcast" >
+        </activity>
+        <activity
+            android:name="sg.smu.iheart.myrecord.MyRecordActivity"
+            android:label="@string/title_activity_my_record" >
+        </activity>
+    </application>
+
+</manifest>

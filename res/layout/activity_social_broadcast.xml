@@ -1,0 +1,93 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SocialBroadcastActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/social_broadcast_notification_button"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/navigation_button"
+                android:text="Notification" >
+            </Button>
+
+            <Button
+                android:id="@+id/social_broadcast_friends_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/navigation_button"
+                android:text="Friends" >
+            </Button>
+
+            <Button
+                android:id="@+id/social_broadcast_broadcast_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/hightlight_button"
+                android:text="Broadcast" >
+            </Button>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/social_broadcast_textview_to"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="To"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/social_broadcast_textview_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Location"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/social_broadcast_textview_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/social_broadcast_textview_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Time"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/social_broadcast_textview_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Message"
+            android:inputType="text" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/social_broadcast_button_broadcast"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/navigation_button"
+        android:text="Broadcast" >
+    </Button>
+
+</RelativeLayout>

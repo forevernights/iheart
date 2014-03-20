@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="40dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location: " >
+            </TextView>
+
+            <TextView
+                android:id="@+id/list_my_record_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HSA" >
+            </TextView>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date: " >
+            </TextView>
+
+            <TextView
+                android:id="@+id/list_my_record_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="05/02/2014" >
+            </TextView>
+        </TableRow>
+        
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Time: " >
+            </TextView>
+
+            <TextView
+                android:id="@+id/list_my_record_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="13:00 - 14:00" >
+            </TextView>
+        </TableRow>
+
+</TableLayout>

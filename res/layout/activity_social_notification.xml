@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SocialNotificationActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/social_notification_notification_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/hightlight_button"
+            android:text="Notification" >
+        </Button>
+
+        <Button
+            android:id="@+id/social_notification_friends_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/navigation_button"
+            android:text="Friends" >
+        </Button>
+
+        <Button
+            android:id="@+id/social_notification_broadcast_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/navigation_button"
+            android:text="Broadcast" >
+        </Button>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/social_listview_message"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>
