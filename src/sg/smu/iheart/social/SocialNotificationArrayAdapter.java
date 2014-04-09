@@ -1,25 +1,28 @@
 package sg.smu.iheart.social;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import sg.smu.iheart.R;
 import sg.smu.iheart.StaticData;
-import sg.smu.iheart.eform.EFormSurveyActivity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.provider.CalendarContract;
 import android.provider.CalendarContract.Events;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class SocialNotificationArrayAdapter extends ArrayAdapter<SocialNotification>{
@@ -37,30 +40,83 @@ public class SocialNotificationArrayAdapter extends ArrayAdapter<SocialNotificat
 			
 			final SocialNotification no = messages.get(position);
 			
-			View rowView = inflater.inflate(R.layout.list_social_notification, parent, false);
-			final LinearLayout messageContainer = (LinearLayout)rowView.findViewById(R.id.list_social_container_message);
+			final View rowView = inflater.inflate(R.layout.list_social_notification, parent, false);
 			TextView titleTV = (TextView)rowView.findViewById(R.id.list_social_title);
 			
-			if(no.type==0)
-				titleTV.setText(messages.get(position).title);
-			else if(no.type==1)
+			if(no.type==0){
+				titleTV.setText(messages.get(position).name+" has invited you to go for donation");
+			}
+			else if(no.type==1){
+				rowView.setBackgroundColor(Color.parseColor("#d7d7d7"));
 				titleTV.setText(no.name+" wants to be your friend!");
-			
-			
-			messageContainer.setVisibility(View.GONE);
-			
+			}
+						
 			((ImageView)rowView.findViewById(R.id.list_social_profile_image)).setImageDrawable(context.getResources().getDrawable(messages.get(position).drawableResource));
+			ImageView iconIV = (ImageView)rowView.findViewById(R.id.list_social_icon_image);
+			if(no.type==0){
+				iconIV.setImageResource(R.drawable.envelope);
+			}else{
+				iconIV.setImageResource(R.drawable.person_cross);
+			}
 			
 			rowView.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
 				public void onClick(View v) {
 					if(no.type==0){
-						if(messageContainer.getVisibility()==View.VISIBLE){
-							messageContainer.setVisibility(View.GONE);	
-						}else{
-							messageContainer.setVisibility(View.VISIBLE);
-						}
+						
+						AlertDialog.Builder builder = new AlertDialog.Builder(context);
+						LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+						View view = inflater.inflate(R.layout.notification_donation_event_dialog, null);
+
+						TextView fromTV = (TextView)view.findViewById(R.id.list_social_notification_textview_from);
+						TextView locationTV = (TextView)view.findViewById(R.id.list_social_notification_textview_location);
+						TextView dateTV = (TextView)view.findViewById(R.id.list_social_notification_textview_date);
+						TextView timeTV = (TextView)view.findViewById(R.id.list_social_notification_textview_time);
+						TextView messageTV = (TextView)view.findViewById(R.id.list_social_notification_textview_message);
+						
+						fromTV.setText(no.name);
+						locationTV.setText(no.location);
+						dateTV.setText(no.date);
+						timeTV.setText(no.time);
+						messageTV.setText(no.message);
+						
+						 
+						builder.setView(view)
+						 .setPositiveButton("Accept", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								StaticData.friends.add(new SocialFriend(no.email, no.name, no.mobile, no.gender, no.drawableResource,true));
+								StaticData.notifications.remove(position);
+								notifyDataSetChanged();
+								
+				
+								Calendar beginTime = Calendar.getInstance();
+								try {
+									Date eventDate = new SimpleDateFormat("dd/MM/yyyy hh:mm", Locale.ENGLISH).parse(no.date+" "+no.time);
+									Intent intent = new Intent(Intent.ACTION_EDIT);
+									intent.setType("vnd.android.cursor.item/event");
+									intent.putExtra(Events.TITLE, StaticData.notifications.get(position).name+" has invited you to go for donation");
+									intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+											eventDate.getTime());
+									intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+											eventDate.getTime()+3600000);
+									intent.putExtra(Events.ALL_DAY, false);// periodicity
+									context.startActivity(intent);
+								} catch (ParseException e) {
+									Log.e("SocialNotification", e.getMessage());
+								}
+
+								
+							}
+						}).setNegativeButton("Reject", new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								StaticData.notifications.remove(position);
+								notifyDataSetChanged();
+							}
+						});
+						builder.show();
 					}else if(no.type==1){
 						 AlertDialog.Builder builder = new AlertDialog.Builder(context);
 						 LayoutInflater inflater = ((Activity) context).getLayoutInflater();
@@ -76,7 +132,7 @@ public class SocialNotificationArrayAdapter extends ArrayAdapter<SocialNotificat
 						 .setPositiveButton("Accept", new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int which) {
-								StaticData.friends.add(new SocialFriend(no.email, no.name, no.mobile, no.gender, no.drawableResource));
+								StaticData.friends.add(new SocialFriend(no.email, no.name, no.mobile, no.gender, no.drawableResource,true));
 								StaticData.notifications.remove(position);
 								notifyDataSetChanged();
 							}
@@ -87,56 +143,11 @@ public class SocialNotificationArrayAdapter extends ArrayAdapter<SocialNotificat
 								notifyDataSetChanged();
 							}
 						});
-						 builder.show();
+						builder.show();
 					}
 				}
 			});
-			
-			TextView locationTV = (TextView)rowView.findViewById(R.id.list_social_notification_textview_location);
-			TextView dateTV = (TextView)rowView.findViewById(R.id.list_social_notification_textview_date);
-			TextView timeTV = (TextView)rowView.findViewById(R.id.list_social_notification_textview_time);
-			TextView messageTV = (TextView)rowView.findViewById(R.id.list_social_notification_textview_message);
-			
-			locationTV.setText(no.location);
-			dateTV.setText(no.date);
-			timeTV.setText(no.time);
-			messageTV.setText(no.message);
-			
-			
-			
-			Button acceptButton = (Button)rowView.findViewById(R.id.list_social_button_accept);
-			acceptButton.setOnClickListener(new View.OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					
-					StaticData.notifications.remove(position);
-					notifyDataSetChanged();
-					
-					Calendar beginTime = Calendar.getInstance();
-					Intent intent = new Intent(Intent.ACTION_EDIT);
-					intent.setType("vnd.android.cursor.item/event");
-					intent.putExtra(Events.TITLE, "Social Donation");
-					intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
-							beginTime.getTimeInMillis());
-					intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
-							Calendar.getInstance().getTimeInMillis()+600000);
-					intent.putExtra(Events.ALL_DAY, false);// periodicity
-					            intent.putExtra(Events.DESCRIPTION,"Blood Donation with "+StaticData.username);
-					context.startActivity(intent);
-
-				}
-			});
-			
-			Button rejectButton = (Button)rowView.findViewById(R.id.list_social_button_reject);
-			rejectButton.setOnClickListener(new View.OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					StaticData.notifications.remove(position);
-					notifyDataSetChanged();
-				}
-			});
+		
 			
 
 			return rowView;

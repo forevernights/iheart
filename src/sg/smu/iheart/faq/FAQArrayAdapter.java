@@ -25,7 +25,9 @@ public class FAQArrayAdapter extends ArrayAdapter<FAQQuestion> {
 	 
 			View rowView = inflater.inflate(R.layout.list_faq, parent, false);
 			TextView questionTV = (TextView) rowView.findViewById(R.id.list_faq_title);
+			TextView contentTV = (TextView) rowView.findViewById(R.id.list_faq_content);
 			questionTV.setText(questions.get(position).title);
+			contentTV.setText(questions.get(position).content);
 			
 			return rowView;
 	}

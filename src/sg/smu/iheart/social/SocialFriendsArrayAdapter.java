@@ -31,21 +31,32 @@ public class SocialFriendsArrayAdapter extends ArrayAdapter<SocialFriend>{
 			TextView mobileTV = (TextView)rowView.findViewById(R.id.list_social_friends_mobile_no);
 			TextView genderTV = (TextView)rowView.findViewById(R.id.list_social_friends_gender);
 			ImageView profileIV = (ImageView)rowView.findViewById(R.id.list_social_friends_profile_image);
-			Button unfriendBtn = (Button)rowView.findViewById(R.id.list_social_friends_unfriend_button);
-			SocialFriend friend = friends.get(position);
+			Button actionBtn = (Button)rowView.findViewById(R.id.list_social_friends_action_button);
+			final SocialFriend friend = friends.get(position);
 			
 			nameTV.setText(friend.name);
 			emailTV.setText(friend.email);
 			mobileTV.setText(friend.mobile);
 			genderTV.setText(friend.gender);
 			profileIV.setImageDrawable(context.getResources().getDrawable(friend.drawableResource));
-			unfriendBtn.setOnClickListener(new View.OnClickListener() {
+			actionBtn.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					friends.remove(position);
-					notifyDataSetChanged();
+					if(friend.isFriend){
+						friend.isFriend = false;
+						notifyDataSetChanged();
+					}else{
+						friend.isFriend = true;
+						notifyDataSetChanged();
+					}
 				}
 			});
+			
+			if(friend.isFriend){
+				actionBtn.setText("Unfriend");
+			}else{
+				actionBtn.setText("Add friend");
+			}
 			
 			return rowView;
 	}

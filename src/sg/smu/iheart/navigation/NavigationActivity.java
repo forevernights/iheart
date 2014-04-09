@@ -1,11 +1,13 @@
 package sg.smu.iheart.navigation;
 
 import sg.smu.iheart.R;
+import sg.smu.iheart.StaticData;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.Window;
 import android.widget.GridView;
+import android.widget.TextView;
 
 public class NavigationActivity extends Activity {
 	private GridView navigationContainerGV;
@@ -16,6 +18,7 @@ public class NavigationActivity extends Activity {
         setContentView(R.layout.activity_navigation);
         navigationContainerGV = (GridView)findViewById(R.id.activity_navigation_grid_view_navigation_container);
         navigationContainerGV.setAdapter(new NavigationAdapter(this));
+        ((TextView)findViewById(R.id.activity_navigation_username)).setText(StaticData.username);
     }
 
 

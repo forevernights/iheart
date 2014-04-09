@@ -70,6 +70,7 @@
             android:label="@string/title_activity_supply_info" >
         </activity>
         <activity
+            android:windowSoftInputMode="stateHidden"
             android:name="sg.smu.iheart.social.SocialFriendsActivity"
             android:label="@string/title_activity_social_friends" >
         </activity>

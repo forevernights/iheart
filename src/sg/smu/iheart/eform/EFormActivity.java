@@ -68,6 +68,7 @@ public class EFormActivity extends Activity {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, countries);
 		searchBox.setAdapter(adapter);
+		searchBox.setThreshold(1);
 		searchBox.addTextChangedListener(new TextWatcher(){
 	        public void afterTextChanged(Editable s) {
 	            if(Arrays.asList(validCountries).contains(searchBox.getText().toString())){

@@ -4,17 +4,16 @@ import android.graphics.drawable.Drawable;
 
 public class SocialNotification {
 	public Drawable profileDrawable;
-	public String title;
 	public String location;
 	public String date;
 	public String time;
 	public String message;
 	public int drawableResource;
 	public int type;
-	public SocialNotification(String title,String location, String date, String time,
+	public SocialNotification(String name,String location, String date, String time,
 			String message,int drawableResource,int type) {
 		super();
-		this.title = title;
+		this.name = name;
 		this.location = location;
 		this.date = date;
 		this.time = time;

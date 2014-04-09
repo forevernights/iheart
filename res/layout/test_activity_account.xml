@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -40,11 +40,14 @@
                     android:text="Name:" >
                 </TextView>
 
-                <TextView
+                <EditText
+                    android:id="@+id/account_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Jerrold Wee" >
-                </TextView>
+                    android:background="@android:color/transparent"
+                    android:text="Jerrold Wee"
+                    android:textSize="14sp" >
+                </EditText>
             </LinearLayout>
 
             <LinearLayout
@@ -77,13 +80,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
-                    android:text="Date of Birth " >
+                    android:text="Blood Type: " >
                 </TextView>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="20/08/1992" >
+                    android:text="O" >
                 </TextView>
             </LinearLayout>
 
@@ -97,19 +100,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
-                    android:text="Blood Type: " >
+                    android:inputType="date"
+                    android:text="Date of Birth: " >
                 </TextView>
 
-                <TextView
+                <EditText
+                    android:id="@+id/account_dob"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="O" >
-                </TextView>
+                    android:background="@android:color/transparent"
+                    android:text="20/08/1992"
+                    android:textSize="14sp" >
+                </EditText>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/account_extra_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/account_profile_info"
@@ -129,13 +137,15 @@
                 android:text="NRIC: " >
             </TextView>
 
-            <TextView
+            <EditText
+                android:id="@+id/account_nric"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
+                android:background="@android:color/transparent"
                 android:text="S12345634"
-                android:textStyle="bold" >
-            </TextView>
+                android:textSize="14sp" >
+            </EditText>
         </LinearLayout>
 
         <LinearLayout
@@ -148,15 +158,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
+                android:editable="true"
                 android:text="Email: " >
             </TextView>
 
-            <TextView
+            <EditText
+                android:id="@+id/account_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
-                android:text="taeyeon@naver.com" >
-            </TextView>
+                android:background="@android:color/transparent"
+                android:inputType="textEmailAddress"
+                android:text="taeyeon@naver.com"
+                android:textSize="14sp" >
+            </EditText>
         </LinearLayout>
 
         <LinearLayout
@@ -172,13 +187,25 @@
                 android:text="Mobile No: " >
             </TextView>
 
-            <TextView
+            <EditText
+                android:id="@+id/account_mobile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:text="52343210" >
-            </TextView>
+                android:background="@android:color/transparent"
+                android:inputType="phone"
+                android:text="52343210"
+                android:textSize="14sp" >
+            </EditText>
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/account_button"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/account_extra_info"
+        android:background="@drawable/navigation_button"
+        android:text="Save changes" >
+    </Button>
 
 </RelativeLayout>

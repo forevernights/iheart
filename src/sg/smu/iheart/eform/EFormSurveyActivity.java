@@ -34,6 +34,10 @@ public class EFormSurveyActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_eform_survey);
 		
+		for(EFormQuestion q:StaticData.eformQuestions){
+			q.isAnswered = false;
+		}
+		
 		final ViewGroup actionBarLayout = (ViewGroup) getLayoutInflater()
 				.inflate(R.layout.action_bar, null);
 		final ActionBar actionBar = getActionBar();
@@ -112,10 +116,20 @@ public class EFormSurveyActivity extends Activity {
 					actionButton.setOnClickListener(new View.OnClickListener() {
 						@Override
 						public void onClick(View v) {
-							Toast.makeText(getApplicationContext(), "The e-form has been successfully submitted!", Toast.LENGTH_LONG).show();
-							Intent intent = new Intent(getApplicationContext(),NavigationActivity.class);
-							intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-							startActivity(intent);
+							boolean isAllAnswered = true;
+							for(EFormQuestion q:StaticData.eformQuestions){
+								if(q.isAnswered==false){
+									Toast.makeText(getApplicationContext(), "Please fill in all the required fields before submitting!", Toast.LENGTH_LONG).show();
+									isAllAnswered = false;
+									break;
+								}
+							}
+							if(isAllAnswered==true){
+								Toast.makeText(getApplicationContext(), "The e-form has been successfully submitted!", Toast.LENGTH_LONG).show();
+								Intent intent = new Intent(getApplicationContext(),NavigationActivity.class);
+								intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+								startActivity(intent);
+							}
 						}
 					});
 				}

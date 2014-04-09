@@ -7,6 +7,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -48,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="To"
-            android:inputType="text" />
+            android:inputType="none" />
 
         <EditText
             android:id="@+id/social_broadcast_textview_location"
@@ -65,10 +67,17 @@
             android:inputType="text" />
 
         <EditText
-            android:id="@+id/social_broadcast_textview_time"
+            android:id="@+id/social_broadcast_textview_start_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Time"
+            android:hint="Start Time"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/social_broadcast_textview_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="End Time"
             android:inputType="text" />
 
         <EditText

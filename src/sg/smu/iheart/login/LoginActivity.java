@@ -1,6 +1,7 @@
 package sg.smu.iheart.login;
 
 import sg.smu.iheart.R;
+import sg.smu.iheart.navigation.NavigationActivity;
 import sg.smu.iheart.signup.SignupActivity;
 import android.app.Activity;
 import android.content.Intent;
@@ -17,6 +18,15 @@ public class LoginActivity extends Activity {
 		super.onCreate(savedInstanceState);
 	    this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_login);
+		Button loginButton = (Button)findViewById(R.id.login_button_login);
+		loginButton.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(getApplicationContext(),NavigationActivity.class);
+				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+			}
+		});
 		((Button)findViewById(R.id.login_button_signup)).setOnClickListener(new View.OnClickListener() {
 			
 			@Override

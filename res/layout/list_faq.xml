@@ -10,16 +10,15 @@
     <TextView
         android:id="@+id/list_faq_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Who can donate?" >
+        android:layout_height="wrap_content" >
     </TextView>
     
     <TextView
         android:id="@+id/list_faq_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:text="It's very important that donors drink decaffeinated fluids and eat a good meal within four hours of donating." >
+        android:textColor="#939393"
+        android:visibility="gone" >
     </TextView>
 
 

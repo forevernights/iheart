@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sg.smu.iheart.R;
+import sg.smu.iheart.StaticData;
 import sg.smu.iheart.navigation.NavigationActivity;
 import android.app.ActionBar;
 import android.app.Activity;
@@ -48,11 +49,9 @@ public class FAQActivity extends Activity {
 			}
 		});
 		
-		final List<FAQQuestion> questions = new ArrayList<FAQQuestion>();
-		questions.add(new FAQQuestion("1. Can I eat before I donate?","It's very important that donors drink decaffeinated fluids and eat a good meal within four hours of donating."));
-		questions.add(new FAQQuestion("2. Who can donate?","Those with big boobs"));
+		
 		faqLV = (ListView)findViewById(R.id.faq_list_question);
-		FAQArrayAdapter adapter = new FAQArrayAdapter(this, 0, questions);
+		FAQArrayAdapter adapter = new FAQArrayAdapter(this, 0, StaticData.faqQuestions);
 		faqLV.setAdapter(adapter);
 		
 		faqLV.setOnItemClickListener(new OnItemClickListener() {

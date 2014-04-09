@@ -44,7 +44,8 @@
             </Button>
         </LinearLayout>
 
-        <EditText
+        <AutoCompleteTextView
+            android:id="@+id/social_friends_searchbox"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/common_border_square"
