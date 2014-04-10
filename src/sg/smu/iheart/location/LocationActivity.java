@@ -1,19 +1,18 @@
 package sg.smu.iheart.location;
 
 import sg.smu.iheart.R;
-import sg.smu.iheart.R.layout;
-import sg.smu.iheart.R.menu;
 import sg.smu.iheart.navigation.NavigationActivity;
-import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class LocationActivity extends Activity {
@@ -40,6 +39,14 @@ public class LocationActivity extends Activity {
 						startActivity(intent);
 					}
 				});
+		final ImageView mapView = (ImageView)findViewById(R.id.mapView);
+		mapView.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				mapView.setImageResource(R.drawable.map);
+			}
+		});
 	}
 
 	@Override

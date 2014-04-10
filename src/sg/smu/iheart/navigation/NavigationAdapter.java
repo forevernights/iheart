@@ -79,7 +79,7 @@ public class NavigationAdapter extends BaseAdapter {
 		navigationButtons = new ArrayList<NavigationButton>();
 		navigationButtons.add(new NavigationButton("Account",R.drawable.navigation_account,AccountActivity.class));
 		navigationButtons.add(new NavigationButton("Calendar", R.drawable.navigation_calendar,ScheduleActivity.class));
-		navigationButtons.add(new NavigationButton("My Records", 0,MyRecordActivity.class));
+		navigationButtons.add(new NavigationButton("My Records", R.drawable.myrecord2,MyRecordActivity.class));
 		navigationButtons.add(new NavigationButton("E-Form", R.drawable.navigation_eform,EFormActivity.class));
 		navigationButtons.add(new NavigationButton("Location", R.drawable.navigation_location,LocationActivity.class));
 		navigationButtons.add(new NavigationButton("Supply", R.drawable.navigation_supply,SupplyActivity.class));

@@ -36,13 +36,13 @@ public class StaticData {
 
 	}
 	static{
-		notifications.add(new SocialNotification("Sooyoung","HSA","21/12/2012","11:00","Hey! Let's go together",R.drawable.image_2,0));
+		notifications.add(new SocialNotification("Sooyoung","HSA","12/05/2014","11:00","Hey! Let's go together",R.drawable.image_2,0));
 		notifications.add(new SocialNotification(0, "Sunny", "sunny@naver.kr", "843339944", "Female", "Yo,be friend!", R.drawable.image_4, 1));
-		notifications.add(new SocialNotification("Minah","HSA","21/12/2012","11:00","Hey! Let's go together",R.drawable.image_3,0));
-		notifications.add(new SocialNotification("Jessica","HSA","21/12/2012","11:00","Hey! Let's go together",R.drawable.image_4,0));
+		notifications.add(new SocialNotification("Minah","HSA","20/05/2014","11:00","Hey! Let's go together",R.drawable.image_3,0));
+		notifications.add(new SocialNotification("Jessica","HSA","19/05/2014","11:00","Hey! Let's go together",R.drawable.image_4,0));
 		notifications.add(new SocialNotification(0, "Mackenzie Foy", "foy@uk.twilight.com", "8383444", "Female", "Glad to know you!", R.drawable.image_5, 1));
-		notifications.add(new SocialNotification("Yoona","HSA","21/12/2012","11:00","Hey! Let's go together",R.drawable.image_1,0));
-		notifications.add(new SocialNotification("Tiffany","HSA","21/12/2012","11:00","Hey! Let's go together",R.drawable.image_2,0));
+		notifications.add(new SocialNotification("Yoona","HSA","21/05/2014","11:00","Hey! Let's go together",R.drawable.image_1,0));
+		notifications.add(new SocialNotification("Tiffany","HSA","10/05/2014","11:00","Hey! Let's go together",R.drawable.image_2,0));
 		
 		records.add(new MyRecord("HSA", "05/02/2014", "13:00 - 14:00"));
 		records.add(new MyRecord("HSA", "07/07/2013", "10:00 - 11:00"));
